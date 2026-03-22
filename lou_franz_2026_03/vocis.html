@@ -68,10 +68,10 @@
       color: var(--text-muted);
       transition: all .15s;
     }
-    .lz-btn.active { background: var(--stem-color); color: white; border-color: var(--stem-color); }
-    .lz-btn.lz1.active { background: var(--er);     color: white; border-color: var(--er); }
-    .lz-btn.lz2.active { background: var(--ir);     color: white; border-color: var(--ir); }
-    .lz-btn.lz3.active { background: var(--re);     color: white; border-color: var(--re); }
+    .lz-btn.active            { background: var(--stem-color); color: white; border-color: var(--stem-color); }
+    .lz-btn.lz1.active { background: var(--er);         color: white; border-color: var(--er); }
+    .lz-btn.lz2.active { background: var(--ir);         color: white; border-color: var(--ir); }
+    .lz-btn.lz3.active { background: var(--re);         color: white; border-color: var(--re); }
     .shuffle-btn {
       font-family: var(--font-sans);
       font-size: .82rem;
@@ -159,10 +159,11 @@
     .flip-card.lz2 .card-lz-badge { color: var(--ir); }
     .flip-card.lz3 .card-lz-badge { color: var(--re); }
 
-    .card-fr {
-      font-family: var(--font-serif);
-      font-size: 1rem;
-      font-weight: 700;
+    /* Front = Deutsch */
+    .card-de-front {
+      font-family: var(--font-sans);
+      font-size: .98rem;
+      font-weight: 600;
       color: var(--text);
       text-align: center;
       line-height: 1.3;
@@ -172,19 +173,21 @@
       color: var(--text-muted);
       margin-top: .45rem;
     }
-    .card-de {
-      font-family: var(--font-sans);
-      font-size: .92rem;
+    /* Back = Französisch */
+    .card-fr-back {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.05rem;
+      font-weight: 700;
       text-align: center;
-      line-height: 1.4;
+      line-height: 1.3;
       color: white;
     }
-    .card-back-fr {
+    .card-back-de {
       font-size: .65rem;
       opacity: .55;
       margin-top: .4rem;
-      font-family: var(--font-serif);
-      font-style: italic;
+      font-family: var(--font-sans);
       text-align: center;
     }
 
@@ -350,9 +353,239 @@
       margin-top: .5rem;
     }
 
+    /* ══ SCHREIBEN ══ */
+    #mode-write {
+      max-width: 560px;
+      margin: 0 auto 6rem;
+      padding: 0 1rem;
+    }
+
+    .wr-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.2rem;
+    }
+    .wr-progress-text {
+      font-size: .82rem;
+      color: var(--text-muted);
+    }
+    .wr-progress-text strong { color: var(--text); }
+    .wr-restart-btn {
+      font-family: var(--font-sans);
+      font-size: .78rem;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: .25rem .7rem;
+      cursor: pointer;
+      background: var(--surface);
+      color: var(--text-muted);
+      transition: all .12s;
+    }
+    .wr-restart-btn:hover { color: var(--text); border-color: #9CA3AF; }
+
+    .wr-dots {
+      display: flex;
+      gap: .25rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 1.2rem;
+      min-height: 8px;
+    }
+    .wr-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+    }
+    .wr-dot.correct { background: var(--shared); }
+    .wr-dot.wrong   { background: var(--er); }
+    .wr-dot.current { background: var(--aux-mid); }
+
+    .wr-card {
+      background: var(--surface);
+      border-radius: 18px;
+      box-shadow: 0 6px 24px rgba(0,0,0,.11);
+      padding: 2rem 2rem 2rem;
+    }
+
+    .wr-lz-badge {
+      display: inline-block;
+      font-size: .7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      padding: .12rem .55rem;
+      border-radius: 999px;
+      margin-bottom: .8rem;
+    }
+    .wr-lz-badge.lz1 { background: var(--er-light); color: var(--er); }
+    .wr-lz-badge.lz2 { background: var(--ir-light); color: var(--ir); }
+    .wr-lz-badge.lz3 { background: var(--re-light); color: var(--re); }
+
+    .wr-de-word {
+      font-family: var(--font-sans);
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-align: center;
+      color: var(--text);
+      margin-bottom: .3rem;
+      line-height: 1.2;
+    }
+    .wr-hint {
+      font-size: .75rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 1.8rem;
+    }
+
+    .wr-input-row {
+      display: flex;
+      gap: .5rem;
+      margin-bottom: 1rem;
+    }
+    .wr-input {
+      flex: 1;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.05rem;
+      padding: .5rem .9rem;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .wr-input:focus   { border-color: var(--aux-mid); }
+    .wr-input.correct { border-color: var(--shared); background: var(--shared-light); }
+    .wr-input.wrong   { border-color: var(--er);     background: var(--er-light); }
+    .wr-input:disabled { opacity: .85; }
+
+    .wr-check-btn {
+      font-family: var(--font-sans);
+      font-size: .88rem;
+      font-weight: 600;
+      background: var(--stem-color);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: .5rem 1.1rem;
+      cursor: pointer;
+      transition: background .12s;
+      white-space: nowrap;
+    }
+    .wr-check-btn:hover:not(:disabled) { background: #1A237E; }
+    .wr-check-btn:disabled { opacity: .4; cursor: default; }
+
+    .wr-feedback {
+      text-align: center;
+      font-size: .95rem;
+      min-height: 1.5rem;
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+    .wr-feedback.correct { color: var(--shared); font-weight: 600; }
+    .wr-feedback.wrong   { color: var(--er);     font-weight: 600; }
+
+    .wr-next-btn {
+      display: block;
+      margin: 0 auto;
+      background: var(--shared);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: .5rem 2rem;
+      font-family: var(--font-sans);
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity .15s;
+    }
+    .wr-next-btn:hover { opacity: .85; }
+    .wr-next-btn.hidden { display: none; }
+
+    /* ── Auswertung (Ergebnis-Seite) ── */
+    .wr-result-card {
+      background: var(--surface);
+      border-radius: 18px;
+      box-shadow: 0 6px 24px rgba(0,0,0,.11);
+      padding: 2rem 2rem 2rem;
+      display: none;
+    }
+    .wr-result-card.active { display: block; }
+
+    .wr-result-score {
+      text-align: center;
+      margin-bottom: 1.6rem;
+    }
+    .wr-result-score .score-big {
+      font-family: var(--font-serif);
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--text);
+    }
+    .wr-result-score .score-label {
+      font-size: .85rem;
+      color: var(--text-muted);
+      margin-top: .3rem;
+    }
+    .wr-result-score .score-big.perfect { color: var(--shared); }
+    .wr-result-score .score-big.bad     { color: var(--er); }
+
+    .wr-errors-title {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: .8rem;
+    }
+    .wr-error-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      margin-bottom: 1.6rem;
+    }
+    .wr-error-item {
+      background: var(--er-light);
+      border: 1px solid var(--er-mid);
+      border-radius: 10px;
+      padding: .65rem 1rem;
+      font-size: .9rem;
+      line-height: 1.45;
+    }
+    .wr-error-de   { font-weight: 600; color: var(--text); }
+    .wr-error-typed { color: var(--er); font-family: var(--font-serif); font-style: italic; }
+    .wr-error-correct { color: var(--shared); font-family: var(--font-serif); font-style: italic; font-weight: 700; }
+
+    .wr-perfect-msg {
+      text-align: center;
+      color: var(--shared);
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .wr-again-btn {
+      display: block;
+      margin: 0 auto;
+      background: var(--stem-color);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: .55rem 2rem;
+      font-family: var(--font-sans);
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity .15s;
+    }
+    .wr-again-btn:hover { opacity: .85; }
+
     @media (max-width: 600px) {
-      .cards-grid { grid-template-columns: repeat(2, 1fr); }
+      .cards-grid  { grid-template-columns: repeat(2, 1fr); }
       .mc-options  { grid-template-columns: 1fr; }
+      .wr-input-row { flex-direction: column; }
     }
   </style>
 </head>
@@ -383,6 +616,7 @@
     <div class="voci-tabs">
       <button class="voci-tab active" id="tab-cards">Karteikarten</button>
       <button class="voci-tab" id="tab-mc">Multiple Choice</button>
+      <button class="voci-tab" id="tab-write">Schreiben</button>
     </div>
   </header>
 
@@ -422,86 +656,120 @@
     </div>
   </section>
 
+  <!-- ══ SCHREIBEN ══ -->
+  <section id="mode-write" class="mode-section">
+    <div class="wr-topbar">
+      <div class="wr-progress-text" id="wr-progress-text">Wort <strong>1</strong> / 12</div>
+      <button class="wr-restart-btn" id="wr-restart-btn">Neu starten</button>
+    </div>
+    <div class="wr-dots" id="wr-dots"></div>
+
+    <!-- Frage-Karte -->
+    <div class="wr-card" id="wr-question-card">
+      <span class="wr-lz-badge" id="wr-lz-badge"></span>
+      <div class="wr-de-word" id="wr-de-word"></div>
+      <div class="wr-hint">Schreibe die französische Übersetzung — achte auf Akzente!</div>
+      <div class="wr-input-row">
+        <input type="text" class="wr-input" id="wr-input"
+               autocomplete="off" spellcheck="false" placeholder="Französisch …">
+        <button class="wr-check-btn" id="wr-check-btn">Prüfen</button>
+      </div>
+      <div class="wr-feedback" id="wr-feedback"></div>
+      <button class="wr-next-btn hidden" id="wr-next-btn">Weiter &rarr;</button>
+    </div>
+
+    <!-- Auswertung -->
+    <div class="wr-result-card" id="wr-result-card">
+      <div class="wr-result-score">
+        <div class="score-big" id="wr-score-big"></div>
+        <div class="score-label">von 12 richtig</div>
+      </div>
+      <div id="wr-errors-section"></div>
+      <button class="wr-again-btn" id="wr-again-btn">Nochmal — neue 12 Wörter</button>
+    </div>
+  </section>
+
   <script>
   // ============================================================
   // DATA
   // ============================================================
   const VOCAB = [
     // Lernziel 1
-    { lz: 1, fr: 'un anniversaire',        de: 'ein Geburtstag' },
-    { lz: 1, fr: 'la liberté',             de: 'die Freiheit' },
-    { lz: 1, fr: "on l'appelle",           de: 'man nennt ihn / sie' },
-    { lz: 1, fr: 'la couleur',             de: 'die Farbe' },
-    { lz: 1, fr: 'changer de couleur',     de: 'die Farbe wechseln' },
-    { lz: 1, fr: 'la lumière',             de: 'das Licht' },
-    { lz: 1, fr: 'la construction',        de: 'der Bau / die Konstruktion' },
-    { lz: 1, fr: 'coûter',                 de: 'kosten' },
-    { lz: 1, fr: 'payer',                  de: 'zahlen / bezahlen' },
-    { lz: 1, fr: "à l'intérieur",          de: 'im Innern' },
-    { lz: 1, fr: 'en fer',                 de: 'aus Eisen' },
-    { lz: 1, fr: 'environ',                de: 'ungefähr / etwa' },
-    { lz: 1, fr: 'le poids',               de: 'das Gewicht' },
-    { lz: 1, fr: 'la hauteur',             de: 'die Höhe' },
-    { lz: 1, fr: 'long / longue',          de: 'lang' },
-    { lz: 1, fr: 'large',                  de: 'breit' },
-    { lz: 1, fr: "jusqu'à",               de: 'bis' },
-    { lz: 1, fr: 'pourtant',               de: 'dennoch / trotzdem' },
-    { lz: 1, fr: 'la taille',              de: 'die Grösse / Kleidergrösse' },
-    { lz: 1, fr: 'géant / géante',         de: 'riesig' },
-    { lz: 1, fr: 'magnifique',             de: 'wunderschön / prächtig' },
-    { lz: 1, fr: 'jeune',                  de: 'jung' },
-    { lz: 1, fr: 'fort / forte',           de: 'stark / kräftig' },
+    { lz: 1, fr: 'un anniversaire',          de: 'ein Geburtstag' },
+    { lz: 1, fr: 'la liberté',               de: 'die Freiheit' },
+    { lz: 1, fr: "on l'appelle",             de: 'man nennt ihn / sie' },
+    { lz: 1, fr: 'la couleur',               de: 'die Farbe' },
+    { lz: 1, fr: 'changer de couleur',       de: 'die Farbe wechseln' },
+    { lz: 1, fr: 'la lumière',               de: 'das Licht' },
+    { lz: 1, fr: 'la construction',          de: 'der Bau / die Konstruktion' },
+    { lz: 1, fr: 'coûter',                   de: 'kosten' },
+    { lz: 1, fr: 'payer',                    de: 'zahlen / bezahlen' },
+    { lz: 1, fr: "à l'intérieur",            de: 'im Innern' },
+    { lz: 1, fr: 'en fer',                   de: 'aus Eisen' },
+    { lz: 1, fr: 'environ',                  de: 'ungefähr / etwa' },
+    { lz: 1, fr: 'le poids',                 de: 'das Gewicht' },
+    { lz: 1, fr: 'la hauteur',               de: 'die Höhe' },
+    { lz: 1, fr: 'long / longue',            de: 'lang' },
+    { lz: 1, fr: 'large',                    de: 'breit' },
+    { lz: 1, fr: "jusqu'à",                  de: 'bis' },
+    { lz: 1, fr: 'pourtant',                 de: 'dennoch / trotzdem' },
+    { lz: 1, fr: 'la taille',                de: 'die Grösse / Kleidergrösse' },
+    { lz: 1, fr: 'géant / géante',           de: 'riesig' },
+    { lz: 1, fr: 'magnifique',               de: 'wunderschön / prächtig' },
+    { lz: 1, fr: 'jeune',                    de: 'jung' },
+    { lz: 1, fr: 'fort / forte',             de: 'stark / kräftig' },
     // Lernziel 2
-    { lz: 2, fr: 'un objet',               de: 'ein Gegenstand' },
-    { lz: 2, fr: 'la matière',             de: 'das Material / der Werkstoff' },
-    { lz: 2, fr: 'en bois',                de: 'aus Holz' },
-    { lz: 2, fr: 'en plastique',           de: 'aus Plastik' },
-    { lz: 2, fr: 'en métal',               de: 'aus Metall' },
-    { lz: 2, fr: 'en tissu',               de: 'aus Stoff / aus Gewebe' },
-    { lz: 2, fr: 'en verre',               de: 'aus Glas' },
-    { lz: 2, fr: 'en cuir',                de: 'aus Leder' },
-    { lz: 2, fr: 'en pierre',              de: 'aus Stein' },
-    { lz: 2, fr: 'en argent',              de: 'aus Silber' },
-    { lz: 2, fr: 'en or',                  de: 'aus Gold' },
-    { lz: 2, fr: 'un bracelet',            de: 'ein Armband' },
-    { lz: 2, fr: 'la montre',              de: 'die Armbanduhr' },
-    { lz: 2, fr: 'les baskets (f pl)',     de: 'die Turnschuhe' },
-    { lz: 2, fr: 'le lit',                 de: 'das Bett' },
-    { lz: 2, fr: 'rectangulaire / carré/e', de: 'rechteckig / quadratisch' },
-    { lz: 2, fr: 'un exemplaire',          de: 'ein Exemplar' },
-    { lz: 2, fr: 'rond / ronde',           de: 'rund' },
-    { lz: 2, fr: 'oval / ovale',           de: 'oval' },
-    { lz: 2, fr: 'lourd / lourde',         de: 'schwer' },
-    { lz: 2, fr: 'léger / légère',         de: 'leicht' },
-    { lz: 2, fr: 'court / courte',         de: 'kurz' },
-    { lz: 2, fr: 'vieux / vieille',        de: 'alt' },
-    { lz: 2, fr: 'mou / molle',            de: 'weich / schlaff' },
-    { lz: 2, fr: 'un escalier',            de: 'eine Treppe' },
-    { lz: 2, fr: 'parfois',                de: 'manchmal' },
-    { lz: 2, fr: 'souvent',                de: 'oft' },
-    { lz: 2, fr: 'sur',                    de: 'auf (örtlich)' },
-    { lz: 2, fr: 'sous',                   de: 'unter (örtlich)' },
-    { lz: 2, fr: 'dans',                   de: 'in (örtlich)' },
-    { lz: 2, fr: 'devant',                 de: 'vor (örtlich)' },
-    { lz: 2, fr: 'derrière',               de: 'hinter (örtlich)' },
-    { lz: 2, fr: 'à côté de',              de: 'neben' },
-    { lz: 2, fr: 'voir',                   de: 'sehen' },
-    { lz: 2, fr: 'mettre',                 de: 'legen / stellen / anziehen' },
-    { lz: 2, fr: 'ouvrir',                 de: 'öffnen' },
-    { lz: 2, fr: 'offrir qc à qn',         de: 'jmdm. etw. anbieten / schenken' },
+    { lz: 2, fr: 'un objet',                 de: 'ein Gegenstand' },
+    { lz: 2, fr: 'la matière',               de: 'das Material / der Werkstoff' },
+    { lz: 2, fr: 'en bois',                  de: 'aus Holz' },
+    { lz: 2, fr: 'en plastique',             de: 'aus Plastik' },
+    { lz: 2, fr: 'en métal',                 de: 'aus Metall' },
+    { lz: 2, fr: 'en tissu',                 de: 'aus Stoff / aus Gewebe' },
+    { lz: 2, fr: 'en verre',                 de: 'aus Glas' },
+    { lz: 2, fr: 'en cuir',                  de: 'aus Leder' },
+    { lz: 2, fr: 'en pierre',                de: 'aus Stein' },
+    { lz: 2, fr: 'en argent',                de: 'aus Silber' },
+    { lz: 2, fr: 'en or',                    de: 'aus Gold' },
+    { lz: 2, fr: 'un bracelet',              de: 'ein Armband' },
+    { lz: 2, fr: 'la montre',                de: 'die Armbanduhr' },
+    { lz: 2, fr: 'les baskets (f pl)',       de: 'die Turnschuhe' },
+    { lz: 2, fr: 'le lit',                   de: 'das Bett' },
+    { lz: 2, fr: 'rectangulaire / carré/e',  de: 'rechteckig / quadratisch' },
+    { lz: 2, fr: 'un exemplaire',            de: 'ein Exemplar' },
+    { lz: 2, fr: 'rond / ronde',             de: 'rund' },
+    { lz: 2, fr: 'oval / ovale',             de: 'oval' },
+    { lz: 2, fr: 'lourd / lourde',           de: 'schwer' },
+    { lz: 2, fr: 'léger / légère',           de: 'leicht' },
+    { lz: 2, fr: 'court / courte',           de: 'kurz' },
+    { lz: 2, fr: 'vieux / vieille',          de: 'alt' },
+    { lz: 2, fr: 'mou / molle',              de: 'weich / schlaff' },
+    { lz: 2, fr: 'un escalier',              de: 'eine Treppe' },
+    { lz: 2, fr: 'parfois',                  de: 'manchmal' },
+    { lz: 2, fr: 'souvent',                  de: 'oft' },
+    { lz: 2, fr: 'sur',                      de: 'auf (örtlich)' },
+    { lz: 2, fr: 'sous',                     de: 'unter (örtlich)' },
+    { lz: 2, fr: 'dans',                     de: 'in (örtlich)' },
+    { lz: 2, fr: 'devant',                   de: 'vor (örtlich)' },
+    { lz: 2, fr: 'derrière',                 de: 'hinter (örtlich)' },
+    { lz: 2, fr: 'à côté de',                de: 'neben' },
+    { lz: 2, fr: 'voir',                     de: 'sehen' },
+    { lz: 2, fr: 'mettre',                   de: 'legen / stellen / anziehen' },
+    { lz: 2, fr: 'ouvrir',                   de: 'öffnen' },
+    { lz: 2, fr: 'offrir qc à qn',           de: 'jmdm. etw. anbieten / schenken' },
     // Lernziel 3
-    { lz: 3, fr: 'longtemps',              de: 'lange (zeitlich)' },
-    { lz: 3, fr: 'partout',                de: 'überall' },
-    { lz: 3, fr: 'la moto',                de: 'das Motorrad' },
-    { lz: 3, fr: 'la voiture',             de: 'das Auto' },
-    { lz: 3, fr: 'le bateau',              de: 'das Schiff / das Boot' },
-    { lz: 3, fr: 'le train',               de: 'der Zug' },
-    { lz: 3, fr: 'un avion',               de: 'ein Flugzeug' },
-    { lz: 3, fr: 'la fourchette',          de: 'die Gabel' },
-    { lz: 3, fr: 'le couteau',             de: 'das Messer' },
+    { lz: 3, fr: 'longtemps',                de: 'lange (zeitlich)' },
+    { lz: 3, fr: 'partout',                  de: 'überall' },
+    { lz: 3, fr: 'la moto',                  de: 'das Motorrad' },
+    { lz: 3, fr: 'la voiture',               de: 'das Auto' },
+    { lz: 3, fr: 'le bateau',                de: 'das Schiff / das Boot' },
+    { lz: 3, fr: 'le train',                 de: 'der Zug' },
+    { lz: 3, fr: 'un avion',                 de: 'ein Flugzeug' },
+    { lz: 3, fr: 'la fourchette',            de: 'die Gabel' },
+    { lz: 3, fr: 'le couteau',               de: 'das Messer' },
   ];
 
   const LZ_LABEL = { 1: 'Lernziel 1', 2: 'Lernziel 2', 3: 'Lernziel 3' };
+  const WR_COUNT = 12;
 
   function shuffle(arr) {
     const a = [...arr];
@@ -512,30 +780,34 @@
     return a;
   }
 
-  // ============================================================
-  // MODE TABS
-  // ============================================================
-  const tabCards  = document.getElementById('tab-cards');
-  const tabMC     = document.getElementById('tab-mc');
-  const modeCards = document.getElementById('mode-cards');
-  const modeMC    = document.getElementById('mode-mc');
-
-  tabCards.addEventListener('click', () => {
-    tabCards.classList.add('active');
-    tabMC.classList.remove('active');
-    modeCards.classList.add('active');
-    modeMC.classList.remove('active');
-  });
-  tabMC.addEventListener('click', () => {
-    tabMC.classList.add('active');
-    tabCards.classList.remove('active');
-    modeMC.classList.add('active');
-    modeCards.classList.remove('active');
-    if (!mcStarted) startMC();
-  });
+  function normalize(s) {
+    return s.trim().toLowerCase();
+  }
 
   // ============================================================
-  // KARTEIKARTEN
+  // MODE TABS  (3 Tabs)
+  // ============================================================
+  const tabs = {
+    cards: { tab: document.getElementById('tab-cards'),  sec: document.getElementById('mode-cards') },
+    mc:    { tab: document.getElementById('tab-mc'),     sec: document.getElementById('mode-mc')    },
+    write: { tab: document.getElementById('tab-write'),  sec: document.getElementById('mode-write') },
+  };
+
+  function switchTab(key) {
+    Object.entries(tabs).forEach(([k, { tab, sec }]) => {
+      tab.classList.toggle('active', k === key);
+      sec.classList.toggle('active', k === key);
+    });
+    if (key === 'mc'    && !mcStarted)  startMC();
+    if (key === 'write' && !wrStarted)  startWrite();
+  }
+
+  tabs.cards.tab.addEventListener('click', () => switchTab('cards'));
+  tabs.mc.tab.addEventListener('click',    () => switchTab('mc'));
+  tabs.write.tab.addEventListener('click', () => switchTab('write'));
+
+  // ============================================================
+  // KARTEIKARTEN  (Vorderseite = Deutsch, Rückseite = Französisch)
   // ============================================================
   let currentLZ   = 'all';
   let displayList = [...VOCAB];
@@ -558,12 +830,12 @@
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <span class="card-lz-badge">${LZ_LABEL[v.lz]}</span>
-            <div class="card-fr">${v.fr}</div>
-            <div class="card-tap-hint">Klicken &rarr; Deutsch</div>
+            <div class="card-de-front">${v.de}</div>
+            <div class="card-tap-hint">Klicken &rarr; Französisch</div>
           </div>
           <div class="flip-card-back">
-            <div class="card-de">${v.de}</div>
-            <div class="card-back-fr">${v.fr}</div>
+            <div class="card-fr-back">${v.fr}</div>
+            <div class="card-back-de">${v.de}</div>
           </div>
         </div>`;
       card.addEventListener('click', () => card.classList.toggle('flipped'));
@@ -595,9 +867,9 @@
   let mcIndex    = 0;
   let mcScore    = 0;
   let mcTotal    = 0;
-  let mcDir      = 'de';   // 'de' → show DE, pick FR; 'fr' → show FR, pick DE
+  let mcDir      = 'de';
   let mcAnswered = false;
-  let mcHistory  = [];     // 'correct' | 'wrong'
+  let mcHistory  = [];
 
   const elQuestion = document.getElementById('mc-question');
   const elDirHint  = document.getElementById('mc-dir-hint');
@@ -620,31 +892,24 @@
 
   elNext.addEventListener('click', () => {
     mcIndex++;
-    if (mcIndex >= mcQueue.length) {
-      mcQueue = shuffle(VOCAB);
-      mcIndex = 0;
-    }
-    showQuestion();
+    if (mcIndex >= mcQueue.length) { mcQueue = shuffle(VOCAB); mcIndex = 0; }
+    showMCQuestion();
   });
 
   function startMC() {
     mcStarted = true;
     mcQueue   = shuffle(VOCAB);
-    mcIndex   = 0;
-    mcScore   = 0;
-    mcTotal   = 0;
-    mcHistory = [];
-    renderProgress();
-    showQuestion();
+    mcIndex   = 0; mcScore = 0; mcTotal = 0; mcHistory = [];
+    renderMCProgress();
+    showMCQuestion();
   }
 
-  function getDistractors(correct, n) {
+  function getMCDistractors(correct, n) {
     const correctVal = mcDir === 'de' ? correct.fr : correct.de;
-    const pool = VOCAB.filter(v => (mcDir === 'de' ? v.fr : v.de) !== correctVal);
-    return shuffle(pool).slice(0, n);
+    return shuffle(VOCAB.filter(v => (mcDir === 'de' ? v.fr : v.de) !== correctVal)).slice(0, n);
   }
 
-  function showQuestion() {
+  function showMCQuestion() {
     mcAnswered = false;
     elNext.classList.add('hidden');
     elFeedback.className = 'mc-feedback';
@@ -656,63 +921,50 @@
     const questionText  = mcDir === 'de' ? item.de : item.fr;
     const correctAnswer = mcDir === 'de' ? item.fr : item.de;
 
-    elLzBadge.textContent = LZ_LABEL[item.lz];
-    elLzBadge.className   = `mc-lz-badge lz${item.lz}`;
+    elLzBadge.textContent  = LZ_LABEL[item.lz];
+    elLzBadge.className    = `mc-lz-badge lz${item.lz}`;
     elQuestion.textContent = questionText;
     elDirHint.textContent  = mcDir === 'de'
       ? 'Wähle die richtige französische Übersetzung'
       : 'Wähle die richtige deutsche Übersetzung';
 
-    const options = shuffle([item, ...getDistractors(item, 3)]);
-
-    options.forEach(opt => {
-      const label    = mcDir === 'de' ? opt.fr : opt.de;
+    shuffle([item, ...getMCDistractors(item, 3)]).forEach(opt => {
+      const label     = mcDir === 'de' ? opt.fr : opt.de;
       const isCorrect = opt === item;
       const btn = document.createElement('button');
       btn.className   = 'mc-option';
       btn.textContent = label;
-
       btn.addEventListener('click', () => {
         if (mcAnswered) return;
-        mcAnswered = true;
-        mcTotal++;
-
-        // Reveal all correct options
+        mcAnswered = true; mcTotal++;
         elOptions.querySelectorAll('.mc-option').forEach(b => {
           if (b.textContent === correctAnswer) b.classList.add('correct');
           b.disabled = true;
         });
-
         if (isCorrect) {
-          mcScore++;
-          mcHistory.push('correct');
+          mcScore++; mcHistory.push('correct');
           elFeedback.className   = 'mc-feedback correct';
           elFeedback.textContent = 'Richtig!';
         } else {
-          btn.classList.add('wrong');
-          mcHistory.push('wrong');
+          btn.classList.add('wrong'); mcHistory.push('wrong');
           elFeedback.className   = 'mc-feedback wrong';
           elFeedback.textContent = `Falsch — richtig: ${correctAnswer}`;
         }
-
         elScore.innerHTML = `<strong>${mcScore}</strong> / ${mcTotal}`;
-        renderProgress();
+        renderMCProgress();
         elNext.classList.remove('hidden');
-
-        // After completing the full deck show restart hint
         if (mcIndex === mcQueue.length - 1) {
-          elNext.textContent = 'Nochmal mischen \u2192';
+          elNext.textContent    = 'Nochmal mischen \u2192';
           elRestart.textContent = 'Alle Karten durch — nächste Runde wird gemischt.';
         } else {
           elNext.textContent = 'Nächste Frage \u2192';
         }
       });
-
       elOptions.appendChild(btn);
     });
   }
 
-  function renderProgress() {
+  function renderMCProgress() {
     elProgress.innerHTML = '';
     mcHistory.forEach(r => {
       const dot = document.createElement('div');
@@ -720,6 +972,164 @@
       elProgress.appendChild(dot);
     });
   }
+
+  // ============================================================
+  // SCHREIBEN
+  // ============================================================
+  let wrStarted  = false;
+  let wrQueue    = [];   // 12 random items
+  let wrIndex    = 0;
+  let wrErrors   = [];   // { de, typed, correct }
+  let wrCorrect  = 0;
+  let wrAnswered = false;
+  let wrResults  = [];   // 'correct' | 'wrong' | null, length = WR_COUNT
+
+  const wrProgressText = document.getElementById('wr-progress-text');
+  const wrDots         = document.getElementById('wr-dots');
+  const wrQuestionCard = document.getElementById('wr-question-card');
+  const wrResultCard   = document.getElementById('wr-result-card');
+  const wrLzBadge      = document.getElementById('wr-lz-badge');
+  const wrDeWord       = document.getElementById('wr-de-word');
+  const wrInput        = document.getElementById('wr-input');
+  const wrCheckBtn     = document.getElementById('wr-check-btn');
+  const wrFeedback     = document.getElementById('wr-feedback');
+  const wrNextBtn      = document.getElementById('wr-next-btn');
+  const wrScoreBig     = document.getElementById('wr-score-big');
+  const wrErrorsSection= document.getElementById('wr-errors-section');
+  const wrAgainBtn     = document.getElementById('wr-again-btn');
+  const wrRestartBtn   = document.getElementById('wr-restart-btn');
+
+  wrCheckBtn.addEventListener('click', checkWriteAnswer);
+  wrAgainBtn.addEventListener('click', startWrite);
+  wrRestartBtn.addEventListener('click', startWrite);
+
+  wrInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      if (!wrAnswered) checkWriteAnswer();
+      else if (!wrNextBtn.classList.contains('hidden')) advanceWrite();
+    }
+  });
+
+  wrNextBtn.addEventListener('click', advanceWrite);
+
+  function startWrite() {
+    wrStarted  = true;
+    wrQueue    = shuffle(VOCAB).slice(0, WR_COUNT);
+    wrIndex    = 0;
+    wrErrors   = [];
+    wrCorrect  = 0;
+    wrAnswered = false;
+    wrResults  = Array(WR_COUNT).fill(null);
+
+    wrQuestionCard.style.display = 'block';
+    wrResultCard.classList.remove('active');
+    renderWriteDots();
+    showWriteQuestion();
+  }
+
+  function showWriteQuestion() {
+    wrAnswered = false;
+    wrNextBtn.classList.add('hidden');
+    wrFeedback.className   = 'wr-feedback';
+    wrFeedback.textContent = '';
+    wrInput.value    = '';
+    wrInput.className = 'wr-input';
+    wrInput.disabled  = false;
+    wrCheckBtn.disabled = false;
+
+    const item = wrQueue[wrIndex];
+    wrProgressText.innerHTML = `Wort <strong>${wrIndex + 1}</strong> / ${WR_COUNT}`;
+    wrLzBadge.textContent = LZ_LABEL[item.lz];
+    wrLzBadge.className   = `wr-lz-badge lz${item.lz}`;
+    wrDeWord.textContent  = item.de;
+
+    renderWriteDots();
+    setTimeout(() => wrInput.focus(), 50);
+  }
+
+  function checkWriteAnswer() {
+    if (wrAnswered) return;
+    const item    = wrQueue[wrIndex];
+    const typed   = wrInput.value;
+    const correct = item.fr;
+    const isOk    = normalize(typed) === normalize(correct);
+
+    wrAnswered  = true;
+    wrInput.disabled    = true;
+    wrCheckBtn.disabled = true;
+
+    if (isOk) {
+      wrCorrect++;
+      wrResults[wrIndex] = 'correct';
+      wrInput.classList.add('correct');
+      wrFeedback.className   = 'wr-feedback correct';
+      wrFeedback.textContent = 'Richtig!';
+    } else {
+      wrResults[wrIndex] = 'wrong';
+      wrInput.classList.add('wrong');
+      wrFeedback.className   = 'wr-feedback wrong';
+      wrFeedback.innerHTML   = `Falsch — richtig: <em style="font-family:var(--font-serif)">${correct}</em>`;
+      wrErrors.push({ de: item.de, typed: typed || '(leer)', correct });
+    }
+
+    renderWriteDots();
+    wrNextBtn.classList.remove('hidden');
+
+    if (wrIndex === WR_COUNT - 1) {
+      wrNextBtn.textContent = 'Auswertung anzeigen \u2192';
+    } else {
+      wrNextBtn.textContent = 'Weiter \u2192';
+    }
+  }
+
+  function advanceWrite() {
+    if (wrIndex < WR_COUNT - 1) {
+      wrIndex++;
+      showWriteQuestion();
+    } else {
+      showWriteResult();
+    }
+  }
+
+  function showWriteResult() {
+    wrQuestionCard.style.display = 'none';
+    wrResultCard.classList.add('active');
+    wrProgressText.innerHTML = `Fertig! <strong>${wrCorrect}</strong> / ${WR_COUNT}`;
+
+    wrScoreBig.textContent = `${wrCorrect} / ${WR_COUNT}`;
+    wrScoreBig.className   = 'score-big' +
+      (wrCorrect === WR_COUNT ? ' perfect' : wrCorrect < 6 ? ' bad' : '');
+
+    if (wrErrors.length === 0) {
+      wrErrorsSection.innerHTML = `<p class="wr-perfect-msg">Perfekt — kein einziger Fehler!</p>`;
+    } else {
+      const rows = wrErrors.map(e => `
+        <li class="wr-error-item">
+          <span class="wr-error-de">${e.de}</span><br>
+          Eingabe: <span class="wr-error-typed">${e.typed}</span><br>
+          Richtig: <span class="wr-error-correct">${e.correct}</span>
+        </li>`).join('');
+      wrErrorsSection.innerHTML = `
+        <div class="wr-errors-title">${wrErrors.length} Fehler</div>
+        <ul class="wr-error-list">${rows}</ul>`;
+    }
+  }
+
+  function renderWriteDots() {
+    wrDots.innerHTML = '';
+    for (let i = 0; i < WR_COUNT; i++) {
+      const dot = document.createElement('div');
+      if (wrResults[i] !== null) {
+        dot.className = `wr-dot ${wrResults[i]}`;
+      } else if (i === wrIndex) {
+        dot.className = 'wr-dot current';
+      } else {
+        dot.className = 'wr-dot';
+      }
+      wrDots.appendChild(dot);
+    }
+  }
+
   </script>
 </body>
 </html>
