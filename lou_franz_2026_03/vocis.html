@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vocabulaire — Lernziele 1–3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── Mode Tabs ── */
+    .voci-tabs {
+      display: inline-flex;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: .25rem;
+      gap: .25rem;
+      margin-top: 1.2rem;
+    }
+    .voci-tab {
+      font-family: var(--font-sans);
+      font-size: .88rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 999px;
+      padding: .4rem 1.4rem;
+      cursor: pointer;
+      background: transparent;
+      color: var(--text-muted);
+      transition: background .15s, color .15s;
+    }
+    .voci-tab.active {
+      background: var(--stem-color);
+      color: white;
+    }
+
+    /* ── Sections ── */
+    .mode-section { display: none; }
+    .mode-section.active { display: block; }
+
+    /* ── Cards toolbar ── */
+    .cards-toolbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      max-width: 1160px;
+      margin: 0 auto 1.2rem;
+      padding: 0 1rem;
+    }
+    .lz-filter {
+      display: flex;
+      gap: .4rem;
+      flex-wrap: wrap;
+    }
+    .lz-btn {
+      font-family: var(--font-sans);
+      font-size: .82rem;
+      font-weight: 600;
+      border: 1.5px solid var(--border);
+      border-radius: 999px;
+      padding: .3rem 1rem;
+      cursor: pointer;
+      background: var(--surface);
+      color: var(--text-muted);
+      transition: all .15s;
+    }
+    .lz-btn.active { background: var(--stem-color); color: white; border-color: var(--stem-color); }
+    .lz-btn.lz1.active { background: var(--er);     color: white; border-color: var(--er); }
+    .lz-btn.lz2.active { background: var(--ir);     color: white; border-color: var(--ir); }
+    .lz-btn.lz3.active { background: var(--re);     color: white; border-color: var(--re); }
+    .shuffle-btn {
+      font-family: var(--font-sans);
+      font-size: .82rem;
+      font-weight: 600;
+      border: 1.5px solid var(--border);
+      border-radius: 999px;
+      padding: .3rem 1rem;
+      cursor: pointer;
+      background: var(--surface);
+      color: var(--text-muted);
+      transition: all .15s;
+    }
+    .shuffle-btn:hover { background: #F1F5F9; color: var(--text); }
+
+    .stats-bar {
+      text-align: center;
+      font-size: .82rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .stats-bar strong { color: var(--text); }
+
+    /* ── Flip card grid ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
+      gap: 1rem;
+      max-width: 1160px;
+      margin: 0 auto 5rem;
+      padding: 0 1rem;
+    }
+
+    /* ── Flip card ── */
+    .flip-card {
+      height: 130px;
+      cursor: pointer;
+      perspective: 900px;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform .42s cubic-bezier(.4,0,.2,1);
+    }
+    .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: .9rem 1rem;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .flip-card-front {
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-top-width: 3px;
+    }
+    .flip-card.lz1 .flip-card-front { border-top-color: var(--er); }
+    .flip-card.lz2 .flip-card-front { border-top-color: var(--ir); }
+    .flip-card.lz3 .flip-card-front { border-top-color: var(--re); }
+
+    .flip-card-back {
+      background: var(--stem-color);
+      color: white;
+      transform: rotateY(180deg);
+    }
+    .card-lz-badge {
+      font-size: .62rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      margin-bottom: .35rem;
+      opacity: .65;
+    }
+    .flip-card.lz1 .card-lz-badge { color: var(--er); }
+    .flip-card.lz2 .card-lz-badge { color: var(--ir); }
+    .flip-card.lz3 .card-lz-badge { color: var(--re); }
+
+    .card-fr {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      text-align: center;
+      line-height: 1.3;
+    }
+    .card-tap-hint {
+      font-size: .65rem;
+      color: var(--text-muted);
+      margin-top: .45rem;
+    }
+    .card-de {
+      font-family: var(--font-sans);
+      font-size: .92rem;
+      text-align: center;
+      line-height: 1.4;
+      color: white;
+    }
+    .card-back-fr {
+      font-size: .65rem;
+      opacity: .55;
+      margin-top: .4rem;
+      font-family: var(--font-serif);
+      font-style: italic;
+      text-align: center;
+    }
+
+    /* ── Multiple Choice ── */
+    #mode-mc {
+      max-width: 560px;
+      margin: 0 auto 6rem;
+      padding: 0 1rem;
+    }
+    .mc-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.2rem;
+      flex-wrap: wrap;
+      gap: .6rem;
+    }
+    .mc-dir-toggle {
+      display: inline-flex;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: .2rem;
+      gap: .2rem;
+    }
+    .mc-dir-btn {
+      font-size: .78rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 999px;
+      padding: .3rem .9rem;
+      cursor: pointer;
+      background: transparent;
+      color: var(--text-muted);
+      transition: all .15s;
+    }
+    .mc-dir-btn.active { background: var(--aux); color: white; }
+
+    .mc-score-display {
+      font-size: .82rem;
+      color: var(--text-muted);
+    }
+    .mc-score-display strong { color: var(--text); }
+
+    .mc-progress {
+      display: flex;
+      gap: .25rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 1.2rem;
+      min-height: 8px;
+    }
+    .mc-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+    }
+    .mc-dot.correct { background: var(--shared); }
+    .mc-dot.wrong   { background: var(--er); }
+
+    .mc-card {
+      background: var(--surface);
+      border-radius: 18px;
+      box-shadow: 0 6px 24px rgba(0,0,0,.11);
+      padding: 2rem 2rem 1.8rem;
+    }
+    .mc-lz-badge {
+      display: inline-block;
+      font-size: .7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      padding: .12rem .55rem;
+      border-radius: 999px;
+      margin-bottom: .8rem;
+    }
+    .mc-lz-badge.lz1 { background: var(--er-light); color: var(--er); }
+    .mc-lz-badge.lz2 { background: var(--ir-light); color: var(--ir); }
+    .mc-lz-badge.lz3 { background: var(--re-light); color: var(--re); }
+
+    .mc-question {
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      font-weight: 700;
+      text-align: center;
+      color: var(--text);
+      margin-bottom: .35rem;
+      line-height: 1.3;
+    }
+    .mc-dir-hint {
+      font-size: .78rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 1.8rem;
+    }
+    .mc-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .65rem;
+      margin-bottom: 1.4rem;
+    }
+    .mc-option {
+      font-family: var(--font-serif);
+      font-size: .95rem;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      padding: .65rem .8rem;
+      cursor: pointer;
+      background: var(--surface);
+      color: var(--text);
+      text-align: center;
+      line-height: 1.35;
+      transition: border-color .12s, background .12s;
+    }
+    .mc-option:hover:not(:disabled) {
+      border-color: var(--aux-mid);
+      background: var(--aux-light);
+    }
+    .mc-option.correct {
+      border-color: var(--shared);
+      background: var(--shared-light);
+      color: var(--shared);
+      font-weight: 700;
+    }
+    .mc-option.wrong {
+      border-color: var(--er);
+      background: var(--er-light);
+      color: var(--er);
+    }
+    .mc-option:disabled { cursor: default; }
+
+    .mc-feedback {
+      text-align: center;
+      font-size: .95rem;
+      min-height: 1.5rem;
+      margin-bottom: .8rem;
+      line-height: 1.4;
+    }
+    .mc-feedback.correct { color: var(--shared); font-weight: 600; }
+    .mc-feedback.wrong   { color: var(--er);     font-weight: 600; }
+
+    .mc-next-btn {
+      display: block;
+      margin: 0 auto;
+      background: var(--shared);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: .5rem 2rem;
+      font-family: var(--font-sans);
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity .15s;
+    }
+    .mc-next-btn:hover { opacity: .85; }
+    .mc-next-btn.hidden { display: none; }
+
+    .mc-restart-hint {
+      text-align: center;
+      font-size: .75rem;
+      color: var(--text-muted);
+      margin-top: .5rem;
+    }
+
+    @media (max-width: 600px) {
+      .cards-grid { grid-template-columns: repeat(2, 1fr); }
+      .mc-options  { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="index.html" class="nav-link">
+      <span class="tense-fr">Présent</span>
+      <span class="tense-de">Gegenwart</span>
+    </a>
+    <a href="passe-compose.html" class="nav-link">
+      <span class="tense-fr">Passé composé</span>
+      <span class="tense-de">Vergangenheit</span>
+    </a>
+    <a href="futur-proche.html" class="nav-link">
+      <span class="tense-fr">Futur proche</span>
+      <span class="tense-de">nahe Zukunft</span>
+    </a>
+    <a href="vocis.html" class="nav-link active">
+      <span class="tense-fr">Vocabulaire</span>
+      <span class="tense-de">Vokabeln</span>
+    </a>
+  </nav>
+
+  <header>
+    <h1>Vocabulaire</h1>
+    <p class="subtitle">Lernziele 1–3 · 68 Wörter</p>
+    <div class="voci-tabs">
+      <button class="voci-tab active" id="tab-cards">Karteikarten</button>
+      <button class="voci-tab" id="tab-mc">Multiple Choice</button>
+    </div>
+  </header>
+
+  <!-- ══ KARTEIKARTEN ══ -->
+  <section id="mode-cards" class="mode-section active">
+    <div class="cards-toolbar">
+      <div class="lz-filter">
+        <button class="lz-btn active" data-lz="all">Alle</button>
+        <button class="lz-btn lz1" data-lz="1">Lernziel 1</button>
+        <button class="lz-btn lz2" data-lz="2">Lernziel 2</button>
+        <button class="lz-btn lz3" data-lz="3">Lernziel 3</button>
+      </div>
+      <button class="shuffle-btn" id="shuffle-btn">Mischen</button>
+    </div>
+    <p class="stats-bar" id="cards-stats"></p>
+    <div class="cards-grid" id="cards-grid"></div>
+  </section>
+
+  <!-- ══ MULTIPLE CHOICE ══ -->
+  <section id="mode-mc" class="mode-section">
+    <div class="mc-controls">
+      <div class="mc-dir-toggle">
+        <button class="mc-dir-btn active" data-dir="de">DE &rarr; FR</button>
+        <button class="mc-dir-btn"        data-dir="fr">FR &rarr; DE</button>
+      </div>
+      <div class="mc-score-display" id="mc-score-display">0 / 0</div>
+    </div>
+    <div class="mc-progress" id="mc-progress"></div>
+    <div class="mc-card">
+      <span class="mc-lz-badge" id="mc-lz-badge"></span>
+      <div class="mc-question" id="mc-question"></div>
+      <div class="mc-dir-hint" id="mc-dir-hint"></div>
+      <div class="mc-options" id="mc-options"></div>
+      <div class="mc-feedback" id="mc-feedback"></div>
+      <button class="mc-next-btn hidden" id="mc-next">Nächste Frage &rarr;</button>
+      <p class="mc-restart-hint" id="mc-restart-hint"></p>
+    </div>
+  </section>
+
+  <script>
+  // ============================================================
+  // DATA
+  // ============================================================
+  const VOCAB = [
+    // Lernziel 1
+    { lz: 1, fr: 'un anniversaire',        de: 'ein Geburtstag' },
+    { lz: 1, fr: 'la liberté',             de: 'die Freiheit' },
+    { lz: 1, fr: "on l'appelle",           de: 'man nennt ihn / sie' },
+    { lz: 1, fr: 'la couleur',             de: 'die Farbe' },
+    { lz: 1, fr: 'changer de couleur',     de: 'die Farbe wechseln' },
+    { lz: 1, fr: 'la lumière',             de: 'das Licht' },
+    { lz: 1, fr: 'la construction',        de: 'der Bau / die Konstruktion' },
+    { lz: 1, fr: 'coûter',                 de: 'kosten' },
+    { lz: 1, fr: 'payer',                  de: 'zahlen / bezahlen' },
+    { lz: 1, fr: "à l'intérieur",          de: 'im Innern' },
+    { lz: 1, fr: 'en fer',                 de: 'aus Eisen' },
+    { lz: 1, fr: 'environ',                de: 'ungefähr / etwa' },
+    { lz: 1, fr: 'le poids',               de: 'das Gewicht' },
+    { lz: 1, fr: 'la hauteur',             de: 'die Höhe' },
+    { lz: 1, fr: 'long / longue',          de: 'lang' },
+    { lz: 1, fr: 'large',                  de: 'breit' },
+    { lz: 1, fr: "jusqu'à",               de: 'bis' },
+    { lz: 1, fr: 'pourtant',               de: 'dennoch / trotzdem' },
+    { lz: 1, fr: 'la taille',              de: 'die Grösse / Kleidergrösse' },
+    { lz: 1, fr: 'géant / géante',         de: 'riesig' },
+    { lz: 1, fr: 'magnifique',             de: 'wunderschön / prächtig' },
+    { lz: 1, fr: 'jeune',                  de: 'jung' },
+    { lz: 1, fr: 'fort / forte',           de: 'stark / kräftig' },
+    // Lernziel 2
+    { lz: 2, fr: 'un objet',               de: 'ein Gegenstand' },
+    { lz: 2, fr: 'la matière',             de: 'das Material / der Werkstoff' },
+    { lz: 2, fr: 'en bois',                de: 'aus Holz' },
+    { lz: 2, fr: 'en plastique',           de: 'aus Plastik' },
+    { lz: 2, fr: 'en métal',               de: 'aus Metall' },
+    { lz: 2, fr: 'en tissu',               de: 'aus Stoff / aus Gewebe' },
+    { lz: 2, fr: 'en verre',               de: 'aus Glas' },
+    { lz: 2, fr: 'en cuir',                de: 'aus Leder' },
+    { lz: 2, fr: 'en pierre',              de: 'aus Stein' },
+    { lz: 2, fr: 'en argent',              de: 'aus Silber' },
+    { lz: 2, fr: 'en or',                  de: 'aus Gold' },
+    { lz: 2, fr: 'un bracelet',            de: 'ein Armband' },
+    { lz: 2, fr: 'la montre',              de: 'die Armbanduhr' },
+    { lz: 2, fr: 'les baskets (f pl)',     de: 'die Turnschuhe' },
+    { lz: 2, fr: 'le lit',                 de: 'das Bett' },
+    { lz: 2, fr: 'rectangulaire / carré/e', de: 'rechteckig / quadratisch' },
+    { lz: 2, fr: 'un exemplaire',          de: 'ein Exemplar' },
+    { lz: 2, fr: 'rond / ronde',           de: 'rund' },
+    { lz: 2, fr: 'oval / ovale',           de: 'oval' },
+    { lz: 2, fr: 'lourd / lourde',         de: 'schwer' },
+    { lz: 2, fr: 'léger / légère',         de: 'leicht' },
+    { lz: 2, fr: 'court / courte',         de: 'kurz' },
+    { lz: 2, fr: 'vieux / vieille',        de: 'alt' },
+    { lz: 2, fr: 'mou / molle',            de: 'weich / schlaff' },
+    { lz: 2, fr: 'un escalier',            de: 'eine Treppe' },
+    { lz: 2, fr: 'parfois',                de: 'manchmal' },
+    { lz: 2, fr: 'souvent',                de: 'oft' },
+    { lz: 2, fr: 'sur',                    de: 'auf (örtlich)' },
+    { lz: 2, fr: 'sous',                   de: 'unter (örtlich)' },
+    { lz: 2, fr: 'dans',                   de: 'in (örtlich)' },
+    { lz: 2, fr: 'devant',                 de: 'vor (örtlich)' },
+    { lz: 2, fr: 'derrière',               de: 'hinter (örtlich)' },
+    { lz: 2, fr: 'à côté de',              de: 'neben' },
+    { lz: 2, fr: 'voir',                   de: 'sehen' },
+    { lz: 2, fr: 'mettre',                 de: 'legen / stellen / anziehen' },
+    { lz: 2, fr: 'ouvrir',                 de: 'öffnen' },
+    { lz: 2, fr: 'offrir qc à qn',         de: 'jmdm. etw. anbieten / schenken' },
+    // Lernziel 3
+    { lz: 3, fr: 'longtemps',              de: 'lange (zeitlich)' },
+    { lz: 3, fr: 'partout',                de: 'überall' },
+    { lz: 3, fr: 'la moto',                de: 'das Motorrad' },
+    { lz: 3, fr: 'la voiture',             de: 'das Auto' },
+    { lz: 3, fr: 'le bateau',              de: 'das Schiff / das Boot' },
+    { lz: 3, fr: 'le train',               de: 'der Zug' },
+    { lz: 3, fr: 'un avion',               de: 'ein Flugzeug' },
+    { lz: 3, fr: 'la fourchette',          de: 'die Gabel' },
+    { lz: 3, fr: 'le couteau',             de: 'das Messer' },
+  ];
+
+  const LZ_LABEL = { 1: 'Lernziel 1', 2: 'Lernziel 2', 3: 'Lernziel 3' };
+
+  function shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  // ============================================================
+  // MODE TABS
+  // ============================================================
+  const tabCards  = document.getElementById('tab-cards');
+  const tabMC     = document.getElementById('tab-mc');
+  const modeCards = document.getElementById('mode-cards');
+  const modeMC    = document.getElementById('mode-mc');
+
+  tabCards.addEventListener('click', () => {
+    tabCards.classList.add('active');
+    tabMC.classList.remove('active');
+    modeCards.classList.add('active');
+    modeMC.classList.remove('active');
+  });
+  tabMC.addEventListener('click', () => {
+    tabMC.classList.add('active');
+    tabCards.classList.remove('active');
+    modeMC.classList.add('active');
+    modeCards.classList.remove('active');
+    if (!mcStarted) startMC();
+  });
+
+  // ============================================================
+  // KARTEIKARTEN
+  // ============================================================
+  let currentLZ   = 'all';
+  let displayList = [...VOCAB];
+
+  const cardsGrid  = document.getElementById('cards-grid');
+  const cardsStats = document.getElementById('cards-stats');
+
+  function renderCards() {
+    const filtered = currentLZ === 'all'
+      ? displayList
+      : displayList.filter(v => v.lz === Number(currentLZ));
+
+    cardsStats.innerHTML = `<strong>${filtered.length}</strong> Karten — klicken zum Umdrehen`;
+    cardsGrid.innerHTML  = '';
+
+    filtered.forEach(v => {
+      const card = document.createElement('div');
+      card.className = `flip-card lz${v.lz}`;
+      card.innerHTML = `
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <span class="card-lz-badge">${LZ_LABEL[v.lz]}</span>
+            <div class="card-fr">${v.fr}</div>
+            <div class="card-tap-hint">Klicken &rarr; Deutsch</div>
+          </div>
+          <div class="flip-card-back">
+            <div class="card-de">${v.de}</div>
+            <div class="card-back-fr">${v.fr}</div>
+          </div>
+        </div>`;
+      card.addEventListener('click', () => card.classList.toggle('flipped'));
+      cardsGrid.appendChild(card);
+    });
+  }
+
+  document.querySelectorAll('.lz-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.lz-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentLZ = btn.dataset.lz;
+      renderCards();
+    });
+  });
+
+  document.getElementById('shuffle-btn').addEventListener('click', () => {
+    displayList = shuffle(VOCAB);
+    renderCards();
+  });
+
+  renderCards();
+
+  // ============================================================
+  // MULTIPLE CHOICE
+  // ============================================================
+  let mcStarted  = false;
+  let mcQueue    = [];
+  let mcIndex    = 0;
+  let mcScore    = 0;
+  let mcTotal    = 0;
+  let mcDir      = 'de';   // 'de' → show DE, pick FR; 'fr' → show FR, pick DE
+  let mcAnswered = false;
+  let mcHistory  = [];     // 'correct' | 'wrong'
+
+  const elQuestion = document.getElementById('mc-question');
+  const elDirHint  = document.getElementById('mc-dir-hint');
+  const elLzBadge  = document.getElementById('mc-lz-badge');
+  const elOptions  = document.getElementById('mc-options');
+  const elFeedback = document.getElementById('mc-feedback');
+  const elNext     = document.getElementById('mc-next');
+  const elScore    = document.getElementById('mc-score-display');
+  const elProgress = document.getElementById('mc-progress');
+  const elRestart  = document.getElementById('mc-restart-hint');
+
+  document.querySelectorAll('.mc-dir-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.mc-dir-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      mcDir = btn.dataset.dir;
+      startMC();
+    });
+  });
+
+  elNext.addEventListener('click', () => {
+    mcIndex++;
+    if (mcIndex >= mcQueue.length) {
+      mcQueue = shuffle(VOCAB);
+      mcIndex = 0;
+    }
+    showQuestion();
+  });
+
+  function startMC() {
+    mcStarted = true;
+    mcQueue   = shuffle(VOCAB);
+    mcIndex   = 0;
+    mcScore   = 0;
+    mcTotal   = 0;
+    mcHistory = [];
+    renderProgress();
+    showQuestion();
+  }
+
+  function getDistractors(correct, n) {
+    const correctVal = mcDir === 'de' ? correct.fr : correct.de;
+    const pool = VOCAB.filter(v => (mcDir === 'de' ? v.fr : v.de) !== correctVal);
+    return shuffle(pool).slice(0, n);
+  }
+
+  function showQuestion() {
+    mcAnswered = false;
+    elNext.classList.add('hidden');
+    elFeedback.className = 'mc-feedback';
+    elFeedback.textContent = '';
+    elOptions.innerHTML = '';
+    elRestart.textContent = '';
+
+    const item = mcQueue[mcIndex];
+    const questionText  = mcDir === 'de' ? item.de : item.fr;
+    const correctAnswer = mcDir === 'de' ? item.fr : item.de;
+
+    elLzBadge.textContent = LZ_LABEL[item.lz];
+    elLzBadge.className   = `mc-lz-badge lz${item.lz}`;
+    elQuestion.textContent = questionText;
+    elDirHint.textContent  = mcDir === 'de'
+      ? 'Wähle die richtige französische Übersetzung'
+      : 'Wähle die richtige deutsche Übersetzung';
+
+    const options = shuffle([item, ...getDistractors(item, 3)]);
+
+    options.forEach(opt => {
+      const label    = mcDir === 'de' ? opt.fr : opt.de;
+      const isCorrect = opt === item;
+      const btn = document.createElement('button');
+      btn.className   = 'mc-option';
+      btn.textContent = label;
+
+      btn.addEventListener('click', () => {
+        if (mcAnswered) return;
+        mcAnswered = true;
+        mcTotal++;
+
+        // Reveal all correct options
+        elOptions.querySelectorAll('.mc-option').forEach(b => {
+          if (b.textContent === correctAnswer) b.classList.add('correct');
+          b.disabled = true;
+        });
+
+        if (isCorrect) {
+          mcScore++;
+          mcHistory.push('correct');
+          elFeedback.className   = 'mc-feedback correct';
+          elFeedback.textContent = 'Richtig!';
+        } else {
+          btn.classList.add('wrong');
+          mcHistory.push('wrong');
+          elFeedback.className   = 'mc-feedback wrong';
+          elFeedback.textContent = `Falsch — richtig: ${correctAnswer}`;
+        }
+
+        elScore.innerHTML = `<strong>${mcScore}</strong> / ${mcTotal}`;
+        renderProgress();
+        elNext.classList.remove('hidden');
+
+        // After completing the full deck show restart hint
+        if (mcIndex === mcQueue.length - 1) {
+          elNext.textContent = 'Nochmal mischen \u2192';
+          elRestart.textContent = 'Alle Karten durch — nächste Runde wird gemischt.';
+        } else {
+          elNext.textContent = 'Nächste Frage \u2192';
+        }
+      });
+
+      elOptions.appendChild(btn);
+    });
+  }
+
+  function renderProgress() {
+    elProgress.innerHTML = '';
+    mcHistory.forEach(r => {
+      const dot = document.createElement('div');
+      dot.className = `mc-dot ${r}`;
+      elProgress.appendChild(dot);
+    });
+  }
+  </script>
+</body>
+</html>
