@@ -1,7 +1,13 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git:*)"
+      "Bash(git:*)",
+      "Read(//g/sszsim/_tmp/le_lou/**)",
+      "Read(//g/sszsim/_tmp/**)",
+      "Bash(dir:*)",
+      "Bash(cmd /c \"dir G:\\\\sszsim\\\\_tmp\\\\le_lou\")",
+      "Bash(powershell -Command \"Get-ChildItem 'G:\\\\sszsim\\\\_tmp\\\\le_lou'\")",
+      "Bash(powershell -Command \"Get-ChildItem 'G:\\\\sszsim\\\\_tmp'\")"
     ]
   }
 }
