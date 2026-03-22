@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Futur proche — nahe Zukunft</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="index.html" class="nav-link">
+      <span class="tense-fr">Présent</span>
+      <span class="tense-de">Gegenwart</span>
+    </a>
+    <a href="passe-compose.html" class="nav-link">
+      <span class="tense-fr">Passé composé</span>
+      <span class="tense-de">Vergangenheit</span>
+    </a>
+    <a href="futur-proche.html" class="nav-link active">
+      <span class="tense-fr">Futur proche</span>
+      <span class="tense-de">nahe Zukunft</span>
+    </a>
+  </nav>
+
+  <header>
+    <h1>Le futur proche</h1>
+    <p class="subtitle">Die nahe Zukunft — was man gleich tun wird</p>
+
+    <!-- Bildungsregel -->
+    <div class="formula-wrap">
+      <div class="formula-box">
+        <span class="formula-part aller-part">aller (konjugiert)</span>
+        <span class="formula-plus">+</span>
+        <span class="formula-part inf-part">Infinitif (unverändert)</span>
+      </div>
+    </div>
+
+    <!-- Legende -->
+    <div class="legend">
+      <span class="legend-item">
+        <span class="swatch" style="background:var(--aller-light);color:var(--aller);border:1px solid var(--aller-mid)">aller</span>
+        ändert sich (nach Person)
+      </span>
+      <span class="legend-sep">·</span>
+      <span class="legend-item">
+        <span class="swatch stem-swatch">Infinitif</span>
+        bleibt immer gleich!
+      </span>
+      <span class="legend-sep">·</span>
+      <span class="legend-item">
+        <span class="swatch shared-swatch">allons / allez</span>
+        gleich wie immer: -ons / -ez
+      </span>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ─── aller-Konjugation ─── -->
+    <div class="aller-box">
+      <h3>aller — Konjugation im Présent</h3>
+      <div class="aller-forms">
+        <div class="aller-form-item"><span class="aller-pronoun">je</span><span class="aller-form">vais</span></div>
+        <div class="aller-form-item"><span class="aller-pronoun">tu</span><span class="aller-form">vas</span></div>
+        <div class="aller-form-item"><span class="aller-pronoun">il / elle</span><span class="aller-form">va</span></div>
+        <div class="aller-form-item shared"><span class="aller-pronoun">nous</span><span class="aller-form">allons</span></div>
+        <div class="aller-form-item shared"><span class="aller-pronoun">vous</span><span class="aller-form">allez</span></div>
+        <div class="aller-form-item"><span class="aller-pronoun">ils / elles</span><span class="aller-form">vont</span></div>
+      </div>
+    </div>
+
+    <div class="groups-grid">
+
+      <!-- ─── 1. Gruppe : -ER ─── -->
+      <article class="group er" id="group-er">
+        <div class="group-header">
+          <span class="group-badge">1. Gruppe</span>
+          <h2>Verben auf <em>-er</em></h2>
+          <select class="verb-select" id="select-er"></select>
+        </div>
+        <table class="conj-table three-col" id="table-er">
+          <thead>
+            <tr>
+              <th>Pronomen</th>
+              <th class="aller-th">aller</th>
+              <th class="inf-th">Infinitif — bleibt immer gleich</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </article>
+
+      <!-- ─── 2. Gruppe : -IR ─── -->
+      <article class="group ir" id="group-ir">
+        <div class="group-header">
+          <span class="group-badge">2. Gruppe</span>
+          <h2>Verben auf <em>-ir</em></h2>
+          <select class="verb-select" id="select-ir"></select>
+        </div>
+        <table class="conj-table three-col" id="table-ir">
+          <thead>
+            <tr>
+              <th>Pronomen</th>
+              <th class="aller-th">aller</th>
+              <th class="inf-th">Infinitif — bleibt immer gleich</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </article>
+
+      <!-- ─── 3. Gruppe : -RE ─── -->
+      <article class="group re" id="group-re">
+        <div class="group-header">
+          <span class="group-badge">3. Gruppe</span>
+          <h2>Verben auf <em>-re</em></h2>
+          <select class="verb-select" id="select-re"></select>
+        </div>
+        <table class="conj-table three-col" id="table-re">
+          <thead>
+            <tr>
+              <th>Pronomen</th>
+              <th class="aller-th">aller</th>
+              <th class="inf-th">Infinitif — bleibt immer gleich</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </article>
+
+    </div>
+
+    <!-- ─── Futur proche mit unregelmässigen Verben ─── -->
+    <section class="irreg-fp-section">
+      <h3>Futur proche funktioniert mit <em>allen</em> Verben — auch unregelmässigen!</h3>
+      <p style="font-size:.88rem;color:var(--text-muted);margin-bottom:1rem">
+        Da nur <strong>aller</strong> konjugiert wird und der Infinitif unverändert bleibt,
+        gilt die Regel für jedes Verb — egal ob regelmässig oder nicht.
+      </p>
+      <div class="fp-irreg-grid" id="fp-irreg-grid"></div>
+    </section>
+
+    <!-- ─── Merke dir ─── -->
+    <section class="insights" style="margin-top:1.4rem">
+      <h3>Merke dir</h3>
+      <div class="insight-cards">
+
+        <div class="insight-card shared-card">
+          <div class="insight-pronoun">Der Infinitif</div>
+          <div class="insight-rule">bleibt für <strong>alle Personen gleich</strong></div>
+          <div class="insight-egs">
+            <span class="eg er">parler</span>
+            <span class="eg ir">finir</span>
+            <span class="eg re">vendre</span>
+          </div>
+        </div>
+
+        <div class="insight-card shared-card">
+          <div class="insight-pronoun">nous / vous</div>
+          <div class="insight-rule">aller: immer <strong>allons / allez</strong></div>
+          <div class="insight-egs">
+            <span class="eg" style="background:var(--aller-light);color:var(--aller)">all<strong>ons</strong></span>
+            <span class="eg" style="background:var(--aller-light);color:var(--aller)">all<strong>ez</strong></span>
+          </div>
+        </div>
+
+        <div class="insight-card ir-note">
+          <div class="insight-pronoun ir">Kein Unterschied</div>
+          <div class="insight-rule">zwischen regulären und <strong>unregelmässigen</strong> Verben</div>
+          <div class="insight-egs">
+            <span class="eg ir">je vais <strong>être</strong></span>
+            <span class="eg ir">je vais <strong>faire</strong></span>
+          </div>
+        </div>
+
+        <div class="insight-card re-note">
+          <div class="insight-pronoun re">Verneinung</div>
+          <div class="insight-rule">ne … pas umschliesst <strong>aller</strong></div>
+          <div class="insight-egs">
+            <span class="eg re" style="font-size:.82rem">je <strong>ne</strong> vais <strong>pas</strong> partir</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ─── Übungs-Sektion ─── -->
+  <section id="exercise-section" class="exercise-section ex-hidden">
+    <div class="ex-card">
+      <div class="ex-header">
+        <button class="ex-back-btn" id="ex-back">← Erklärungen</button>
+        <div class="ex-score-area">
+          <div class="score-dots" id="ex-score-dots"></div>
+          <span id="ex-score-text">0 / 0</span>
+        </div>
+      </div>
+      <span class="ex-group-badge" id="ex-group-badge"></span>
+      <div class="ex-verb" id="ex-verb"></div>
+      <div class="ex-prompt" id="ex-prompt"></div>
+      <div class="ex-question-row">
+        <span class="ex-pronoun" id="ex-pronoun"></span>
+        <span class="ex-arrow">▸</span>
+        <input type="text" class="ex-input" id="ex-input" autocomplete="off" spellcheck="false" placeholder="aller + infinitif">
+        <button class="ex-check-btn" id="ex-check">Prüfen</button>
+      </div>
+      <div class="ex-feedback" id="ex-feedback"></div>
+      <button class="ex-next-btn ex-hidden" id="ex-next">Nächste Aufgabe →</button>
+    </div>
+  </section>
+  <button class="exercise-fab" id="exercise-fab">✏ Üben</button>
+
+  <script src="exercises.js"></script>
+  <script src="futur-proche.js"></script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Konjugation — Présent de l'indicatif</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="index.html" class="nav-link active">
+      <span class="tense-fr">Présent</span>
+      <span class="tense-de">Gegenwart</span>
+    </a>
+    <a href="passe-compose.html" class="nav-link">
+      <span class="tense-fr">Passé composé</span>
+      <span class="tense-de">Vergangenheit</span>
+    </a>
+    <a href="futur-proche.html" class="nav-link">
+      <span class="tense-fr">Futur proche</span>
+      <span class="tense-de">nahe Zukunft</span>
+    </a>
+  </nav>
+
+  <header>
+    <h1>Le présent de l'indicatif</h1>
+    <p class="subtitle">Die drei Verbgruppen im Überblick</p>
+    <div class="legend">
+      <span class="legend-item">
+        <span class="swatch stem-swatch">Stamm</span>
+        bleibt gleich
+      </span>
+      <span class="legend-sep">·</span>
+      <span class="legend-item">
+        <span class="swatch end-swatch">Endung</span>
+        ändert sich
+      </span>
+      <span class="legend-sep">·</span>
+      <span class="legend-item">
+        <span class="swatch shared-swatch">-ons / -ez</span>
+        gleich in allen 3 Gruppen
+      </span>
+    </div>
+  </header>
+
+  <main>
+    <div class="groups-grid">
+
+      <!-- ─── 1er groupe : -ER ─── -->
+      <article class="group er" id="group-er">
+        <div class="group-header">
+          <span class="group-badge">1. Gruppe</span>
+          <h2>Verben auf <em>-er</em></h2>
+          <select class="verb-select" id="select-er"></select>
+        </div>
+        <table class="conj-table" id="table-er">
+          <thead>
+            <tr><th>Pronomen</th><th>Konjugierte Form</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </article>
+
+      <!-- ─── 2e groupe : -IR ─── -->
+      <article class="group ir" id="group-ir">
+        <div class="group-header">
+          <span class="group-badge">2. Gruppe</span>
+          <h2>Verben auf <em>-ir</em></h2>
+          <select class="verb-select" id="select-ir"></select>
+        </div>
+        <table class="conj-table" id="table-ir">
+          <thead>
+            <tr><th>Pronomen</th><th>Konjugierte Form</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </article>
+
+      <!-- ─── 3e groupe : -RE ─── -->
+      <article class="group re" id="group-re">
+        <div class="group-header">
+          <span class="group-badge">3. Gruppe</span>
+          <h2>Verben auf <em>-re</em></h2>
+          <select class="verb-select" id="select-re"></select>
+        </div>
+        <table class="conj-table" id="table-re">
+          <thead>
+            <tr><th>Pronomen</th><th>Konjugierte Form</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </article>
+
+    </div>
+
+    <!-- ─── Merke dir ─── -->
+    <section class="insights">
+      <h3>Merke dir</h3>
+      <div class="insight-cards">
+
+        <div class="insight-card shared-card">
+          <div class="insight-pronoun">nous</div>
+          <div class="insight-rule">immer <strong>-ons</strong> in allen 3 Gruppen</div>
+          <div class="insight-egs">
+            <span class="eg er">parl<strong>ons</strong></span>
+            <span class="eg ir">finiss<strong>ons</strong></span>
+            <span class="eg re">vend<strong>ons</strong></span>
+          </div>
+        </div>
+
+        <div class="insight-card shared-card">
+          <div class="insight-pronoun">vous</div>
+          <div class="insight-rule">immer <strong>-ez</strong> in allen 3 Gruppen</div>
+          <div class="insight-egs">
+            <span class="eg er">parl<strong>ez</strong></span>
+            <span class="eg ir">finiss<strong>ez</strong></span>
+            <span class="eg re">vend<strong>ez</strong></span>
+          </div>
+        </div>
+
+        <div class="insight-card ir-note">
+          <div class="insight-pronoun ir">nous / vous / ils</div>
+          <div class="insight-rule"><strong>-iss-</strong> wird im Plural an den Stamm angehängt</div>
+          <div class="insight-egs">
+            <span class="eg ir">fin → fin<strong>iss</strong>ons</span>
+          </div>
+        </div>
+
+        <div class="insight-card re-note">
+          <div class="insight-pronoun re">il / elle</div>
+          <div class="insight-rule"><strong>keine</strong> Endung wird hinzugefügt</div>
+          <div class="insight-egs">
+            <span class="eg re">vend<span class="zero-end"> —</span></span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+    <!-- ─── Unregelmässige Verben ─── -->
+    <section class="irregular">
+      <h3>Unregelmässige Verben <span class="irregular-subtitle">— diese wichtigen Verben folgen keinem der obigen Muster</span></h3>
+      <div class="irreg-grid" id="irregular-grid"></div>
+    </section>
+
+  <!-- ─── Übungs-Sektion ─── -->
+  <section id="exercise-section" class="exercise-section ex-hidden">
+    <div class="ex-card">
+      <div class="ex-header">
+        <button class="ex-back-btn" id="ex-back">← Erklärungen</button>
+        <div class="ex-score-area">
+          <div class="score-dots" id="ex-score-dots"></div>
+          <span id="ex-score-text">0 / 0</span>
+        </div>
+      </div>
+      <span class="ex-group-badge" id="ex-group-badge"></span>
+      <div class="ex-verb" id="ex-verb"></div>
+      <div class="ex-prompt" id="ex-prompt"></div>
+      <div class="ex-question-row">
+        <span class="ex-pronoun" id="ex-pronoun"></span>
+        <span class="ex-arrow">▸</span>
+        <input type="text" class="ex-input" id="ex-input" autocomplete="off" spellcheck="false" placeholder="…">
+        <button class="ex-check-btn" id="ex-check">Prüfen</button>
+      </div>
+      <div class="ex-feedback" id="ex-feedback"></div>
+      <button class="ex-next-btn ex-hidden" id="ex-next">Nächste Aufgabe →</button>
+    </div>
+  </section>
+  <button class="exercise-fab" id="exercise-fab">✏ Üben</button>
+
+  <script src="exercises.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

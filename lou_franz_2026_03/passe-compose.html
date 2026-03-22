@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passé composé — Vergangenheit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="index.html" class="nav-link">
+      <span class="tense-fr">Présent</span>
+      <span class="tense-de">Gegenwart</span>
+    </a>
+    <a href="passe-compose.html" class="nav-link active">
+      <span class="tense-fr">Passé composé</span>
+      <span class="tense-de">Vergangenheit</span>
+    </a>
+    <a href="futur-proche.html" class="nav-link">
+      <span class="tense-fr">Futur proche</span>
+      <span class="tense-de">nahe Zukunft</span>
+    </a>
+  </nav>
+
+  <header>
+    <h1>Le passé composé</h1>
+    <p class="subtitle">Die vollendete Vergangenheit — was man getan hat</p>
+
+    <!-- Bildungsregel -->
+    <div class="formula-wrap">
+      <div class="formula-box">
+        <span class="formula-part aux-part">avoir / être</span>
+        <span class="formula-plus">+</span>
+        <span class="formula-part pp-part">participe passé</span>
+      </div>
+    </div>
+
+    <!-- Partizip-Endungen je Verbgruppe -->
+    <div class="pp-endings-wrap">
+      <div class="pp-endings">
+        <div class="pp-card">
+          <span class="pp-from">-er</span>
+          <span class="pp-arrow">→</span>
+          <span class="pp-to">Stamm + <span class="pp-e">-é</span></span>
+          <span style="color:#999;font-size:.8rem">(parl<strong style="color:var(--er)">é</strong>)</span>
+        </div>
+        <div class="pp-card">
+          <span class="pp-from">-ir</span>
+          <span class="pp-arrow">→</span>
+          <span class="pp-to">Stamm + <span class="pp-i">-i</span></span>
+          <span style="color:#999;font-size:.8rem">(fin<strong style="color:var(--ir)">i</strong>)</span>
+        </div>
+        <div class="pp-card">
+          <span class="pp-from">-re</span>
+          <span class="pp-arrow">→</span>
+          <span class="pp-to">Stamm + <span class="pp-u">-u</span></span>
+          <span style="color:#999;font-size:.8rem">(vend<strong style="color:var(--re)">u</strong>)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Legende -->
+    <div class="legend">
+      <span class="legend-item">
+        <span class="swatch" style="background:var(--aux-light);color:var(--aux);border:1px solid var(--aux-mid)">avoir / être</span>
+        Hilfsverb (ändert sich)
+      </span>
+      <span class="legend-sep">·</span>
+      <span class="legend-item">
+        <span class="swatch stem-swatch">Stamm</span>
+        bleibt gleich
+      </span>
+      <span class="legend-sep">·</span>
+      <span class="legend-item">
+        <span class="swatch end-swatch">-é / -i / -u</span>
+        Partizip-Endung (fix!)
+      </span>
+      <span class="legend-sep">·</span>
+      <span class="legend-item">
+        <span class="swatch shared-swatch">avons / avez</span>
+        gleich in allen 3 Gruppen
+      </span>
+    </div>
+  </header>
+
+  <main>
+    <div class="groups-grid">
+
+      <!-- ─── 1. Gruppe : -ER ─── -->
+      <article class="group er" id="group-er">
+        <div class="group-header">
+          <span class="group-badge">1. Gruppe</span>
+          <h2>Verben auf <em>-er</em></h2>
+          <select class="verb-select" id="select-er"></select>
+        </div>
+        <table class="conj-table three-col" id="table-er">
+          <thead>
+            <tr>
+              <th>Pronomen</th>
+              <th class="aux-th">Hilfsverb</th>
+              <th class="pp-th">Partizip Perfekt <span style="color:var(--er)">(-é)</span> — bleibt immer gleich</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </article>
+
+      <!-- ─── 2. Gruppe : -IR ─── -->
+      <article class="group ir" id="group-ir">
+        <div class="group-header">
+          <span class="group-badge">2. Gruppe</span>
+          <h2>Verben auf <em>-ir</em></h2>
+          <select class="verb-select" id="select-ir"></select>
+        </div>
+        <table class="conj-table three-col" id="table-ir">
+          <thead>
+            <tr>
+              <th>Pronomen</th>
+              <th class="aux-th">Hilfsverb</th>
+              <th class="pp-th">Partizip Perfekt <span style="color:var(--ir)">(-i)</span> — bleibt immer gleich</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </article>
+
+      <!-- ─── 3. Gruppe : -RE ─── -->
+      <article class="group re" id="group-re">
+        <div class="group-header">
+          <span class="group-badge">3. Gruppe</span>
+          <h2>Verben auf <em>-re</em></h2>
+          <select class="verb-select" id="select-re"></select>
+        </div>
+        <table class="conj-table three-col" id="table-re">
+          <thead>
+            <tr>
+              <th>Pronomen</th>
+              <th class="aux-th">Hilfsverb</th>
+              <th class="pp-th">Partizip Perfekt <span style="color:var(--re)">(-u)</span> — bleibt immer gleich</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </article>
+
+    </div>
+
+    <!-- ─── Être ou avoir? ─── -->
+    <section class="etre-section">
+      <h3>Être ou avoir ? — Welches Hilfsverb?</h3>
+      <div class="etre-cols">
+
+        <div class="etre-col avoir-col">
+          <div class="etre-col-title">avoir — die meisten Verben</div>
+          <p style="font-size:.85rem;color:var(--text-muted);margin-bottom:.6rem">
+            Alle drei Verbgruppen (-er, -ir, -re) verwenden in der Regel <strong>avoir</strong>.
+          </p>
+          <ul class="etre-verb-list">
+            <li>parler</li><li>finir</li><li>vendre</li>
+            <li>aimer</li><li>choisir</li><li>répondre</li>
+            <li>travailler</li><li>réussir</li><li>attendre</li>
+          </ul>
+        </div>
+
+        <div class="etre-col etre-col-inner">
+          <div class="etre-col-title">être — Bewegungs- & Zustandsverben</div>
+          <p style="font-size:.85rem;color:var(--text-muted);margin-bottom:.6rem">
+            Diese 14 Verben + alle <strong>réflexifs</strong> verwenden <strong>être</strong>:
+          </p>
+          <ul class="etre-verb-list">
+            <li>aller</li><li>venir</li><li>partir</li><li>arriver</li>
+            <li>entrer</li><li>sortir</li><li>monter</li><li>descendre</li>
+            <li>naître</li><li>mourir</li><li>rester</li><li>tomber</li>
+            <li>retourner</li><li>passer</li>
+          </ul>
+          <p class="etre-note">Eselsbrücke: <strong>DR MRS VANDERTRAMP</strong></p>
+
+          <div class="agreement-box">
+            <p>Bei être: Partizip stimmt mit dem Subjekt überein!</p>
+            <div class="agreement-examples">
+              <span class="agr-ex">il est allé</span>
+              <span class="agr-ex">elle est allé<em>e</em></span>
+              <span class="agr-ex">ils sont allé<em>s</em></span>
+              <span class="agr-ex">elles sont allé<em>es</em></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── Merke dir ─── -->
+    <section class="insights" style="margin-top:1.4rem">
+      <h3>Merke dir</h3>
+      <div class="insight-cards">
+
+        <div class="insight-card shared-card">
+          <div class="insight-pronoun">Das Partizip Perfekt</div>
+          <div class="insight-rule">bleibt für <strong>alle Personen gleich</strong> (mit avoir)</div>
+          <div class="insight-egs">
+            <span class="eg er">parl<strong>é</strong></span>
+            <span class="eg ir">fin<strong>i</strong></span>
+            <span class="eg re">vend<strong>u</strong></span>
+          </div>
+        </div>
+
+        <div class="insight-card shared-card">
+          <div class="insight-pronoun">nous / vous</div>
+          <div class="insight-rule">Hilfsverb: immer <strong>-ons / -ez</strong></div>
+          <div class="insight-egs">
+            <span class="eg" style="background:var(--aux-light);color:var(--aux)">av<strong>ons</strong></span>
+            <span class="eg" style="background:var(--aux-light);color:var(--aux)">av<strong>ez</strong></span>
+          </div>
+        </div>
+
+        <div class="insight-card ir-note">
+          <div class="insight-pronoun ir">-er → -é &nbsp;·&nbsp; -ir → -i &nbsp;·&nbsp; -re → -u</div>
+          <div class="insight-rule">Partizip-Endung nach Verbgruppe</div>
+          <div class="insight-egs">
+            <span class="eg er">parl<strong>é</strong></span>
+            <span class="eg ir">fin<strong>i</strong></span>
+            <span class="eg re">vend<strong>u</strong></span>
+          </div>
+        </div>
+
+        <div class="insight-card re-note">
+          <div class="insight-pronoun re">être-Verben</div>
+          <div class="insight-rule">Partizip <strong>ändert sich</strong> nach Geschlecht/Zahl</div>
+          <div class="insight-egs">
+            <span class="eg re">allé / allée / allés</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ─── Übungs-Sektion ─── -->
+  <section id="exercise-section" class="exercise-section ex-hidden">
+    <div class="ex-card">
+      <div class="ex-header">
+        <button class="ex-back-btn" id="ex-back">← Erklärungen</button>
+        <div class="ex-score-area">
+          <div class="score-dots" id="ex-score-dots"></div>
+          <span id="ex-score-text">0 / 0</span>
+        </div>
+      </div>
+      <span class="ex-group-badge" id="ex-group-badge"></span>
+      <div class="ex-verb" id="ex-verb"></div>
+      <div class="ex-prompt" id="ex-prompt"></div>
+      <div class="ex-question-row">
+        <span class="ex-pronoun" id="ex-pronoun"></span>
+        <span class="ex-arrow">▸</span>
+        <input type="text" class="ex-input" id="ex-input" autocomplete="off" spellcheck="false" placeholder="avoir + participe">
+        <button class="ex-check-btn" id="ex-check">Prüfen</button>
+      </div>
+      <div class="ex-feedback" id="ex-feedback"></div>
+      <button class="ex-next-btn ex-hidden" id="ex-next">Nächste Aufgabe →</button>
+    </div>
+  </section>
+  <button class="exercise-fab" id="exercise-fab">✏ Üben</button>
+
+  <script src="exercises.js"></script>
+  <script src="passe-compose.js"></script>
+</body>
+</html>
