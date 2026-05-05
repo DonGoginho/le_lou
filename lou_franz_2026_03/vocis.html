@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vocabulaire — Lernziele 1–3</title>
+  <title>Vocabulaire — Lernziele 1–3 + Vocis 05.05.2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -72,6 +72,8 @@
     .lz-btn.lz1.active { background: var(--er);         color: white; border-color: var(--er); }
     .lz-btn.lz2.active { background: var(--ir);         color: white; border-color: var(--ir); }
     .lz-btn.lz3.active { background: var(--re);         color: white; border-color: var(--re); }
+    .lz-btn.lz4.active { background: var(--aux);         color: white; border-color: var(--aux); }
+    .lz-btn.lz5.active { background: var(--aller);       color: white; border-color: var(--aller); }
     .shuffle-btn {
       font-family: var(--font-sans);
       font-size: .82rem;
@@ -141,6 +143,8 @@
     .flip-card.lz1 .flip-card-front { border-top-color: var(--er); }
     .flip-card.lz2 .flip-card-front { border-top-color: var(--ir); }
     .flip-card.lz3 .flip-card-front { border-top-color: var(--re); }
+    .flip-card.lz4 .flip-card-front { border-top-color: var(--aux); }
+    .flip-card.lz5 .flip-card-front { border-top-color: var(--aller); }
 
     .flip-card-back {
       background: var(--stem-color);
@@ -158,6 +162,8 @@
     .flip-card.lz1 .card-lz-badge { color: var(--er); }
     .flip-card.lz2 .card-lz-badge { color: var(--ir); }
     .flip-card.lz3 .card-lz-badge { color: var(--re); }
+    .flip-card.lz4 .card-lz-badge { color: var(--aux); }
+    .flip-card.lz5 .card-lz-badge { color: var(--aller); }
 
     /* Front = Deutsch */
     .card-de-front {
@@ -267,6 +273,8 @@
     .mc-lz-badge.lz1 { background: var(--er-light); color: var(--er); }
     .mc-lz-badge.lz2 { background: var(--ir-light); color: var(--ir); }
     .mc-lz-badge.lz3 { background: var(--re-light); color: var(--re); }
+    .mc-lz-badge.lz4 { background: var(--aux-light); color: var(--aux); }
+    .mc-lz-badge.lz5 { background: var(--aller-light); color: var(--aller); }
 
     .mc-question {
       font-family: var(--font-serif);
@@ -422,6 +430,8 @@
     .wr-lz-badge.lz1 { background: var(--er-light); color: var(--er); }
     .wr-lz-badge.lz2 { background: var(--ir-light); color: var(--ir); }
     .wr-lz-badge.lz3 { background: var(--re-light); color: var(--re); }
+    .wr-lz-badge.lz4 { background: var(--aux-light); color: var(--aux); }
+    .wr-lz-badge.lz5 { background: var(--aller-light); color: var(--aller); }
 
     .wr-de-word {
       font-family: var(--font-sans);
@@ -612,7 +622,7 @@
 
   <header>
     <h1>Vocabulaire</h1>
-    <p class="subtitle">Lernziele 1–3 · 68 Wörter</p>
+    <p class="subtitle">Lernziele 1–3 + Vocis 05.05.2026 · 109 Wörter</p>
     <div class="voci-tabs">
       <button class="voci-tab active" id="tab-cards">Karteikarten</button>
       <button class="voci-tab" id="tab-mc">Multiple Choice</button>
@@ -628,6 +638,8 @@
         <button class="lz-btn lz1" data-lz="1">Lernziel 1</button>
         <button class="lz-btn lz2" data-lz="2">Lernziel 2</button>
         <button class="lz-btn lz3" data-lz="3">Lernziel 3</button>
+        <button class="lz-btn lz4" data-lz="4">05.05.2026 · LZ 1</button>
+        <button class="lz-btn lz5" data-lz="5">05.05.2026 · LZ 2</button>
       </div>
       <button class="shuffle-btn" id="shuffle-btn">Mischen</button>
     </div>
@@ -766,9 +778,52 @@
     { lz: 3, fr: 'un avion',                 de: 'ein Flugzeug' },
     { lz: 3, fr: 'la fourchette',            de: 'die Gabel' },
     { lz: 3, fr: 'le couteau',               de: 'das Messer' },
+    // Vocis 05.05.2026 — Lernziel 1
+    { lz: 4, fr: 'un animal, les animaux (m pl)', de: 'ein Tier, die Tiere' },
+    { lz: 4, fr: 'une espèce',              de: 'eine Art, eine Sorte, eine Tierart' },
+    { lz: 4, fr: 'le poisson',              de: 'der Fisch' },
+    { lz: 4, fr: 'le requin',               de: 'der Hai' },
+    { lz: 4, fr: 'un oiseau',               de: 'ein Vogel' },
+    { lz: 4, fr: 'la femelle',              de: 'das Weibchen' },
+    { lz: 4, fr: 'le mâle',                 de: 'das Männchen' },
+    { lz: 4, fr: 'Il fait trois mètres de long.', de: 'Er ist drei Meter lang.' },
+    { lz: 4, fr: 'Il pèse environ trois kilos.', de: 'Er wiegt etwa drei Kilo.' },
+    { lz: 4, fr: 'En moyenne, un chat vit 15 ans.', de: 'Im Durchschnitt lebt eine Katze 15 Jahre.' },
+    { lz: 4, fr: 'la vie',                  de: 'das Leben' },
+    { lz: 4, fr: 'Elle donne naissance à un petit.', de: 'Sie bekommt ein Junges.' },
+    { lz: 4, fr: 'Elle pond un œuf.',       de: 'Sie legt ein Ei.' },
+    { lz: 4, fr: 'Ils vivent dans des groupes.', de: 'Sie leben in Gruppen.' },
+    { lz: 4, fr: 'seul/e',                  de: 'allein, einzig, nur' },
+    { lz: 4, fr: 'la nourriture',           de: 'die Nahrung, die Ernährung' },
+    { lz: 4, fr: 'végétarien/ne',           de: 'vegetarisch' },
+    { lz: 4, fr: 'carnivore/-',             de: 'fleischfressend' },
+    { lz: 4, fr: 'le prédateur',            de: 'das Raubtier' },
+    { lz: 4, fr: 'la proie',                de: 'die Beute' },
+    { lz: 4, fr: 'capturer',                de: 'fangen' },
+    { lz: 4, fr: 'la dent',                 de: 'der Zahn' },
+    { lz: 4, fr: 'dangereux/euse',          de: 'gefährlich' },
+    { lz: 4, fr: 'énorme/-',                de: 'riesig' },
+    { lz: 4, fr: 'fascinant/e',             de: 'faszinierend' },
+    { lz: 4, fr: 'Il peut atteindre une vitesse de 55 km/h.', de: 'Er kann eine Geschwindigkeit von 55 km/h erreichen.' },
+    // Vocis 05.05.2026 — Lernziel 2
+    { lz: 5, fr: 'le mammifère',            de: 'das Säugetier' },
+    { lz: 5, fr: 'la gueule',               de: 'das Maul, die Fresse' },
+    { lz: 5, fr: 'la patte',                de: 'die Pfote, das Bein (eines Tieres)' },
+    { lz: 5, fr: 'la queue',                de: 'der Schwanz' },
+    { lz: 5, fr: 'le pelage',               de: 'das Fell' },
+    { lz: 5, fr: "à l'aide de",             de: 'mithilfe von' },
+    { lz: 5, fr: 'la nageoire',             de: 'die Flosse' },
+    { lz: 5, fr: 'le bec',                  de: 'der Schnabel' },
+    { lz: 5, fr: 'la plume',                de: 'die Feder' },
+    { lz: 5, fr: 'une aile',                de: 'ein Flügel' },
+    { lz: 5, fr: 'voler',                   de: 'fliegen, stehlen' },
+    { lz: 5, fr: 'la forêt vierge',         de: 'der Urwald' },
+    { lz: 5, fr: 'la montagne',             de: 'der Berg' },
+    { lz: 5, fr: 'sur terre (f)',            de: 'an Land, auf der Erde' },
+    { lz: 5, fr: 'Ils vivent dans la mer.', de: 'Sie leben im Meer.' },
   ];
 
-  const LZ_LABEL = { 1: 'Lernziel 1', 2: 'Lernziel 2', 3: 'Lernziel 3' };
+  const LZ_LABEL = { 1: 'Lernziel 1', 2: 'Lernziel 2', 3: 'Lernziel 3', 4: '05.05.2026 · LZ 1', 5: '05.05.2026 · LZ 2' };
   const WR_COUNT = 12;
 
   function shuffle(arr) {
