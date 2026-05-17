@@ -1,33 +1,42 @@
-# CLAUDE.md
+# CLAUDE.md – lou_franz
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Projektbeschreibung
 
-Statische Web-App für den Französischunterricht. Zeigt die Konjugation der drei regulären Verbgruppen (-er, -ir, -re) im Présent de l'indicatif. Zielgruppe: Schüler (deutschsprachig). Kein Build-Schritt, kein Framework — direkt im Browser öffnen.
+Statische Web-App für den Französischunterricht. Zeigt die Konjugation der drei regulären Verbgruppen (-er, -ir, -re) im Présent, Passé composé und Futur proche. Zielgruppe: Schüler (deutschsprachig). Kein Build-Schritt, kein Framework — direkt im Browser öffnen.
+
+**Repo:** github.com/DonGoginho/le_lou  
+**Live:** https://dongoginho.github.io/le_lou/  
+**Deployment:** GitHub Pages via `/docs` Ordner (main branch)
+
+## Dateien & Struktur
 
 ```
-index.html   — Struktur
-style.css    — Design (CSS Custom Properties für Gruppenfarben)
-app.js       — Daten + Rendering
+le_lou/
+├── docs/                 ← GitHub Pages Source (live)
+│   ├── index.html        ← Présent (Startseite)
+│   ├── passe-compose.html
+│   ├── futur-proche.html
+│   ├── vocis.html        ← Vokabeltrainer
+│   ├── style.css         ← Gemeinsames Design
+│   ├── app.js            ← Daten + Rendering Présent
+│   ├── passe-compose.js
+│   ├── futur-proche.js
+│   ├── exercises.js      ← Gemeinsame Übungs-Engine
+│   ├── vocis.csv         ← Vokabeldaten
+│   └── vocis/            ← Vokabel-Bilder (Seiten)
+├── lou_franz/            ← Arbeitsverzeichnis (Source)
+│   └── (gleiche Dateien wie docs/)
+├── index.html            ← Root-Redirect zu lou_franz/
+└── README.md
 ```
 
-## Dateien
+**Wichtig:** Änderungen immer in `lou_franz/` UND `docs/` machen (oder in lou_franz bearbeiten und nach docs kopieren). Nur `/docs` wird von GitHub Pages geserved.
 
-```
-index.html          — Présent (Gegenwart)
-passe-compose.html  — Passé composé (Vergangenheit)
-futur-proche.html   — Futur proche (nahe Zukunft)
-style.css           — Gemeinsames Design (alle drei Seiten)
-app.js              — Daten + Rendering für Présent
-passe-compose.js    — Daten + Rendering für Passé composé
-futur-proche.js     — Daten + Rendering für Futur proche
-exercises.js        — Gemeinsame Übungs-Engine (alle drei Seiten)
-```
+## Starten (lokal)
 
-## Starten
-
-Einfach `index.html` im Browser öffnen. Kein Server nötig.
+Einfach `lou_franz/index.html` im Browser öffnen. Kein Server nötig.
 
 ## Architektur
 
@@ -163,6 +172,18 @@ Wird **vor** dem Seiten-JS geladen. Das Seiten-JS ruft am Ende `initExercises(qu
 `buildExerciseQuestions()` in jedem Seiten-JS generiert alle möglichen Fragen aus den Verbdaten.
 
 **Toggle:** Floating-Button `✏ Üben` unten rechts. Klick blendet `<main>` aus (Klasse `ex-hidden`) und zeigt `#exercise-section`. `← Erklärungen` kehrt zurück.
+
+## Deployment
+
+1. Änderungen in `lou_franz/` machen
+2. Nach `docs/` kopieren: `Copy-Item lou_franz\* docs -Recurse -Force -Exclude ".claude"`
+3. Committen und pushen:
+   ```bash
+   git add docs
+   git commit -m "Update: [Beschreibung]"
+   git push
+   ```
+4. GitHub Pages aktualisiert automatisch (~1 Min.)
 
 ## Design-Prinzipien
 
